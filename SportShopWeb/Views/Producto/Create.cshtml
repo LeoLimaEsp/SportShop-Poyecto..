@@ -1,0 +1,67 @@
+﻿@model SportShopWeb.Models.ProductoModel
+
+@{
+    ViewData["Title"] = "Create";
+}
+<body class="img"></body>
+<style>
+      .hover-effect:hover {
+        opacity: 0.7;
+      }
+
+      .img{
+            background-image: url(https://png.pngtree.com/background/20220716/original/pngtree-colorful-sports-theme-background-material-picture-image_1636814.jpg);
+            background-size:cover;
+      }
+
+     
+</style>
+
+<h4>Nuevo producto</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            
+            <div class="form-group">
+                <label asp-for="Nombre" class="control-label"></label>
+                <input asp-for="Nombre" class="form-control" />
+                <span asp-validation-for="Nombre" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="TipoProductoID" class="control-label"></label>
+                <!-- Usamos un método conocido como HTML helper -->
+                <!-- Parametros:        variable para guardar el id seleccionado, La lista para rellenar, atributos extras -->
+                @Html.DropDownListFor( m=>m.TipoProductoID, Model.tiposProducto, "Seleccionar tipo deporte...", new { @class = "form-select" })
+            </div>
+            <div class="form-group">
+                <label asp-for="Marca" class="control-label"></label>
+                <input asp-for="Marca" class="form-control" />
+                <span asp-validation-for="Marca" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Precio" class="control-label"></label>
+                <input asp-for="Precio" class="form-control" />
+                <span asp-validation-for="Precio" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Stock" class="control-label"></label>
+                <input asp-for="Stock" class="form-control" />
+                <span asp-validation-for="Stock" class="text-danger"></span>
+            </div>
+       
+            <div class="form-group pt-2">
+                <input type="submit" value="Create" class="btn btn-success" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div class="mt-2">
+    <a asp-action="Index" class="btn btn-sm btn-primary"><i class="fa-solid fa-trash-can fa-xs"></i> Regresar a lista</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

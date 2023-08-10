@@ -1,0 +1,45 @@
+﻿@model SportShopWeb.Models.TipoProductoModel
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<body class="img"></body>
+<style>
+      .hover-effect:hover {
+        opacity: 0.8;
+      }
+
+      .img{
+            background-image: url(https://png.pngtree.com/background/20220716/original/pngtree-colorful-sports-theme-background-material-picture-image_1636814.jpg);
+            background-size:cover;
+      }
+
+     
+</style>
+
+<h4>Nuevo deporte</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="NombreTipoProducto" class="control-label"></label>
+                <input asp-for="NombreTipoProducto" class="form-control" />
+                <span asp-validation-for="NombreTipoProducto" class="text-danger"></span>
+            </div>
+            <div class="form-group pt-2">
+                <input type="submit" value="Create" class="btn btn-success" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div class="mt-2">
+    <a asp-action="Index" class="btn btn-sm btn-primary"><i class="fa-solid fa-trash-can fa-xs"></i> Regresar a lista</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

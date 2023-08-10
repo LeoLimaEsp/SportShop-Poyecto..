@@ -1,0 +1,122 @@
+﻿@model IEnumerable<SportShopWeb.Models.VentaModel>
+
+@{
+    ViewData["Title"] = "Ventas";
+}
+<body class="img"></body>
+<style>
+      .hover-effect:hover {
+        opacity: 0.7;
+      }
+
+      .img{
+            background-image: url(https://png.pngtree.com/background/20220716/original/pngtree-colorful-sports-theme-background-material-picture-image_1636814.jpg);
+            background-size:cover;
+      }
+
+     
+</style>
+<h1>Ventas</h1>
+
+<p>
+    <a asp-action="Create" class="btn btn-sm btn-primary" > Nueva venta </a>
+</p>
+
+@{
+    string statusMensaje = ViewData["mensaje"].ToString();
+}
+
+@if(statusMensaje.Contains("exitosa"))
+{
+    <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+  <symbol id="check-circle-fill" fill="currentColor" viewBox="0 0 16 16">
+    <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z"/>
+  </symbol>
+    </svg>
+
+  <div class="alert alert-success alert-dismissible fade show" role="alert">
+      <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Success:"><use xlink:href="#check-circle-fill"/></svg>
+      
+        @ViewData["mensaje"]
+      
+      <button type="button" class="btn-close"  data-bs-dismiss="alert" aria-label="Close"></button>
+  </div>
+}
+
+@if(statusMensaje.Contains("insuficiente"))
+{
+  <div class="alert alert-warning alert-dismissible fade show" role="alert">
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-exclamation-triangle-fill flex-shrink-0 me-2" viewBox="0 0 16 16" role="img" aria-label="Warning:">
+    <path d="M8.982 1.566a1.13 1.13 0 0 0-1.96 0L.165 13.233c-.457.778.091 1.767.98 1.767h13.713c.889 0 1.438-.99.98-1.767L8.982 1.566zM8 5c.535 0 .954.462.9.995l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 5.995A.905.905 0 0 1 8 5zm.002 6a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/>
+    </svg>
+    @ViewData["mensaje"]
+  </div>
+}
+
+@if(statusMensaje.Contains("tarde"))
+{
+  <div class="alert alert-danger alert-dismissible fade show" role="alert">
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-exclamation-triangle-fill flex-shrink-0 me-2" viewBox="0 0 16 16" role="img" aria-label="Warning:">
+    <path d="M8.982 1.566a1.13 1.13 0 0 0-1.96 0L.165 13.233c-.457.778.091 1.767.98 1.767h13.713c.889 0 1.438-.99.98-1.767L8.982 1.566zM8 5c.535 0 .954.462.9.995l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 5.995A.905.905 0 0 1 8 5zm.002 6a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/>
+    </svg>
+    @ViewData["mensaje"]
+  </div>
+}
+
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Id)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.clienteNombre)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.productoNombre)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Cantidad)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.MontoVenta)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FechaVenta)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.clienteNombre)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.productoNombre)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Cantidad)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MontoVenta)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FechaVenta)
+            </td>
+            <td>
+                @*@Html.ActionLink("Editar",  "Edit", new { id=item.Id }, new {@class="btn btn-sm btn-primary"}) *@
+                @Html.ActionLink("Detalles", "Details", new { id=item.Id}, new {@class="btn btn-sm btn-warning"}) 
+                @*<a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-sm btn-danger"><i class="fa-solid fa-trash-can fa-xs"></i> Borrar </a>*@
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

@@ -1,0 +1,31 @@
+﻿﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<body class="img"></body>
+<style>
+      .hover-effect:hover {
+        opacity: 0.6;
+      }
+
+      .img{
+            background-image: url(https://png.pngtree.com/background/20220716/original/pngtree-colorful-sports-theme-background-material-picture-image_1636814.jpg);
+            background-size:cover;
+      }
+
+
+     
+</style>
+<div class="text-center">
+    <h1 class="display-4">Welcome</h1>
+   
+</div>
+<p class="pt-5 text-center">
+    <a class="btn font-weight-normal text-white hover-effect" style="background-color:#DC7633;" asp-action="create" asp-controller="cliente">Crear cliente</a>
+    <a class="btn font-weight-normal text-white hover-effect"  style="background-color:#DC7633;" asp-action="create" asp-controller="producto">Crear producto</a>
+    <a class="btn font-weight-normal text-white hover-effect" style="background-color:#DC7633;" asp-action="create" asp-controller="venta">Crear venta</a>
+    <a class="btn font-weight-normal text-white hover-effect" style="background-color:#DC7633;" asp-action="create" asp-controller="catalog">Crear nuevo deporte</a>
+</p>
+
+
+
